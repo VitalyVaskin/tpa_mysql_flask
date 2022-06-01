@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %}  <span class="badge badge-primary">{{ defect['time_start'] }}</span>
+        {{ defect['equipment'] }} {{ defect['number'] }} - {{ defect['user_start'] }} {% endblock %}</h2>
+    <p>{{ defect['description'] }}</p>
+        <a href="{{ url_for('edit', id=defect['id']) }}">
+            <span class="badge badge-warning">Закрыть дефект</span>
+        </a>
+    <h3>Информация о закрытии дефекта:</h3>
+    <p>{{ defect['time_finish'] }}</p>
+    <p>{{ defect['fix_descr'] }}</p>
+    <p>{{ defect['repairman'] }}</p>
+{% endblock %}

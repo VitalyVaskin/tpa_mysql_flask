@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Список неисправностей {% endblock %}</h1>
+    {% for defect in defects %}
+        <h2><span class="badge badge-primary">{{ defect['time_start'] }}</span>
+        <a href="{{ url_for('defect', defect_id=defect['id']) }}">
+            {{ defect['equipment'] }} {{ defect['number'] }} -- Закрыт: {{ defect['time_finish'] }}</a>
+        </h2>
+        <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{% block title %} Закрыть дефект: {{ defect['equipment'] }} {{ defect['number'] }} {% endblock %}</h3>
+<h6> Время появления дефекта:  {{ defect['time_start'] }} </h6>
+<h6>Описание дефекта:  </h6>
+<h6>{{ defect['description'] }}</h6>
+<h6>Дефект зарегистрировал: {{ defect['user_start'] }}</h6>
+
+<form method="post">
+    <div class="form-group">
+        <label for="time_finish">Время устранения:</label>
+        <input type="text" name="time_finish" placeholder="Введите время устранения"
+               class="form-control"
+               value="{{ request.form['time_finish'] or defect['time_finish'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="fix_descr">Описание устранения неисправности:</label>
+        <textarea name="fix_descr" placeholder="Введите описание устранения неисправности"
+               class="form-control">{{ request.form['fix_descr'] or defect['fix_descr'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="repairman">ФИО устранившего неисправность:</label>
+        <input type="text" name="repairman"
+               placeholder="Введите ФИО регистрирующего неисправность" class="form-control"
+               value="{{ request.form['repairman'] or defect['repairman'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <button type="Ввод" class="btn btn-primary">Закрыть дефект</button>
+    </div>
+</form>
+<hr>
+{% endblock %}

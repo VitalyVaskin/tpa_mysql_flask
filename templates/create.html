@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Зарегистрировать дефект {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="equipment">Оборудование</label>
+        <input type="text" name="equipment"
+               placeholder="Введите тип оборудования" class="form-control"
+               value="{{ request.form['equipment'] }}"></input>
+        <label for="number">Номер</label>
+        <input type="text" name="number"
+               placeholder="Введите номер оборудования или номер ТПА, на котором оно стоит" class="form-control"
+               value="{{ request.form['number'] }}"></input>
+        <label for="description">Описание неисправности</label>
+        <textarea name="description" placeholder="Введите описание неисправности"
+               class="form-control">{{ request.form['description'] }}</textarea>
+        <label for="time_start">Время появления неисправности</label>
+        <input type="text" name="time_start"
+               placeholder="Введите время появления неисправности" class="form-control"
+               value="{{ request.form['time_start'] }}"></input>
+        <label for="user_start">ФИО регистрирующего неисправность</label>
+        <input type="text" name="user_start"
+               placeholder="Введите ФИО регистрирующего неисправность" class="form-control"
+               value="{{ request.form['user_start'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="Ввод" class="btn btn-primary">Ввод</button>
+    </div>
+</form>
+{% endblock %}
